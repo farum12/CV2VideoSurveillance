@@ -1,0 +1,17 @@
+{% from "macros.html" import nav_link with context %}
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - Smart Moose Security Systems</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/main-style.css') }}">
+<nav>
+
+    <div class="topnav">
+        <h1>Smart Moose Security Systems</h1>
+        {{ nav_link('homePage', 'Home Page') }}
+        {{ nav_link('liveFeed', 'Live Feed') }}
+        {{ nav_link('settings', 'Settings') }}
+        {{ nav_link('about', 'About') }}
+    </div>
+</nav>
+<section class="content">
+  {% block content %}{% endblock %}
+</section>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Live Feed{% endblock %}
+{% block content %}
+<p>Here you can view live footage from device's onboard camera with currently
+    selected analysis mode.</p>
+<div class="navbar"><h2>Live Feed</h2></div>
+<p>
+            <img class="liveFeed" src="{{ url_for('video_feed') }}">
+</p>
+{% endblock %}

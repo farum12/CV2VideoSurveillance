@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+<p>This is about panel. Here will be placed various informations about device's current status and about author.</p>
+<p>Current runtime: {{ runtime }}</p>
+<div class="navbar"><h2>Debug</h2></div>
+<p>Display timestamp: {{ currentSettings.displayTimestamp }}</p>
+<p>Display boundaries: {{ currentSettings.displayBoundaries }}</p>
+<p>Selected analysis mode: {{ currentSettings.analysisMode }}</p>
+<p>Use YOLO: {{ currentSettings.useYOLO }}</p>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% from "macros.html" import radio_button with context %}
+{% from "macros.html" import save_button with context %}
+{% from "macros.html" import area_checkbox with context %}
+{% from "macros.html" import numeric_input with context %}
+{% extends 'base.html' %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<p>This is a settings panel. Here will be placed various checkboxes,
+    which will help maintaning device.</p>
+<div class="navbar"><h2>General</h2></div>
+<form method="POST">
+<p>Display timestamp:</p>
+<p>
+    {{ radio_button('displayTimestamp', 'timeStampChoice1', 'yes', 'Yes',
+    currentSettings) }}
+    <br>
+    {{ radio_button('displayTimestamp', 'timeStampChoice2', 'no', 'No',
+    currentSettings) }}
+</p>
+<p>Display area boundaries:</p>
+<p>
+    {{ radio_button('displayBoundaries', 'displayBoundariesChoice1', 'yes',
+    'Yes', currentSettings) }}
+    <br>
+    {{ radio_button('displayBoundaries', 'displayBoundariesChoice2', 'no',
+    'No', currentSettings) }}
+</p>
+<div class="navbar"><h2>Analysis Mode</h2></div>
+<p>Select camera footage analysis mode:</p>
+<p>
+    {{ radio_button('analysisMode', 'anModeChoice1', 'noAn',
+    'No image analysis', currentSettings) }}
+    <br>
+    {{ radio_button('analysisMode', 'anModeChoice2', 'simple',
+    'Simple movement analysis', currentSettings) }}
+    <br>
+    {{ radio_button('analysisMode', 'anModeChoice3', '2areaVert',
+    '2-area vertical analysis', currentSettings) }}
+    <br>
+    {{ radio_button('analysisMode', 'anModeChoice4', '3areaVert',
+    '3-area vertical analysis', currentSettings) }}
+    <br>
+    {{ radio_button('analysisMode', 'anModeChoice5', '2areaHor',
+    '2-area horizontal analysis', currentSettings) }}
+    <br>
+    {{ radio_button('analysisMode', 'anModeChoice6', '3areaHor',
+    '3-area horizontal analysis', currentSettings) }}
+</p>
+<div class="navbar"><h2>Areas</h2></div>
+<p>Select areas that shall be covered by motion detection in
+    multi-area analysis modes:</p>
+<p>
+    {{ area_checkbox('area1', 'area1', ' Area 1', currentSettings) }}<br>
+    {{ area_checkbox('area2', 'area2', ' Area 2', currentSettings) }}<br>
+    {{ area_checkbox('area3', 'area3', ' Area 3', currentSettings) }}
+</p>
+<div class="navbar"><h2>YOLO</h2></div>
+<p>Use YOLO (you only look once) real-time object detection system: </p>
+<p>
+    {{ radio_button('useYOLO', 'useYOLOChoice1', 'yes', 'Yes', currentSettings) }}
+    <br>
+    {{ radio_button('useYOLO', 'useYOLOChoice2', 'no', 'No', currentSettings) }}
+</p>
+<p>WARNING! Using YOLO will turn off previously selected analysis!
+    YOLO is resource-consuming detection. It may cause image rendering to be
+    much slower than using normal analysis modes!</p>
+<div class="navbar"><h2>Various</h2></div>
+<p>Type desired sensitivity for object detection (300 is default;
+    higher number - higher sensitivity):</p>
+    <p>{{ numeric_input('sensitivity', 'sensitivity', currentSettings ) }}</p>
+<p>Type max ticks - this is a value after which the comparision is reset
+    (10 is default):</p>
+    <p>{{ numeric_input('maxTicks', 'maxTicks', currentSettings ) }}</p>
+<div class="saveButton"><input type="submit" value="Save"></div>
+</form>
+{% endblock %}

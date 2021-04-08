@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Live Feed View</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main-style.css') }}">
+
+    </head>
+    <body>
+    <div class="topnav">
+        <a class="active" href="liveFeed">Live Feed</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+        <h1>Smart Moose Security Systems</h1>
+        <div w3-include-HTML="{{ url_for('templates',filename='liveFeed.html') }}">My HTML include will go here.</div>
+
+        <!--<div>
+            <img id="motionjpeg" width="500" src="http://208.139.200.133/mjpg/video.mjpg"/>
+        </div>-->
+        <!--<div>
+            <img src="{{ url_for('video_feed') }}">
+        </div>-->
+        <!--<div>
+            <form action="liveView"><button type="special_button">Live View</button></form>
+        </div>
+        <div>
+            <form action="settings"><button type="special_button">Settings</button></form>
+        </div>-->
+    <!--<script src="{{ url_for('static',filename='scripts/w3-include-HTML.js') }}"></script>-->
+    </body>
+</html>

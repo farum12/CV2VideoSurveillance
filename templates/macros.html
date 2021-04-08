@@ -1,0 +1,31 @@
+{% macro nav_link(endpoint, text) %}
+{% if request.endpoint.endswith(endpoint) %}
+<a class="active" href="{{ url_for(endpoint) }}">{{text}}</a>
+{% else %}
+    <a class="" href="{{ url_for(endpoint) }}">{{text}}</a>
+{% endif %}
+{% endmacro %}
+
+{% macro radio_button(group, id, value, label, currentSettings) %}
+{% if currentSettings[group] == value%}
+<input type="radio" id="{{ id }}" name="{{ group }}" value="{{ value }}" checked="checked"> <label for="{{ id }}">{{label}}</label>
+{% else %}
+<input type="radio" id="{{ id }}" name="{{ group }}" value="{{ value }}"> <label for="{{ id }}">{{label}}</label>
+{% endif %}
+{% endmacro %}
+
+{% macro area_checkbox(group, id, label, currentSettings) %}
+{% if currentSettings[group] == 'True'%}
+<input type="checkbox" id="{{ id }}" name="{{ group }}" value="True" checked="checked"><label for="{{ id }}">{{label}}</label>
+{% else %}
+<input type="checkbox" id="{{ id }}" name="{{ group }}" value="True"><label for="{{ id }}">{{label}}</label>
+{% endif %}
+{% endmacro %}
+
+{% macro numeric_input(id, name, currentSettings) %}
+<input type="number" id="{{ id }}" name="{{ name }}" value="{{ currentSettings[id] }}">
+{% endmacro %}
+
+{% macro save_button(endpoint, text) %}
+<a class="" href="{{ url_for(endpoint) }}">{{text}}</a>
+{% endmacro %}
